@@ -21,9 +21,18 @@
     <ClCompile Include="template.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadDeomo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Template.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadDemo.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

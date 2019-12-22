@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Template.h"
+#include "ThreadDemo.h"
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -10,6 +11,9 @@ int main()
     TestTemplate a;
     auto d = createDelegate(&a, &TestTemplate::fun);
     d(1);
+    
+    testThread();
+
 
     //print(1, 2, 3, 4);
 }

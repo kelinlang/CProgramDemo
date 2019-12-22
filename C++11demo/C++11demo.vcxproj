@@ -149,9 +149,12 @@
   <ItemGroup>
     <ClCompile Include="C++11demo.cpp" />
     <ClCompile Include="template.cpp" />
+    <ClCompile Include="ThreadDemo.cpp" />
+    <ClCompile Include="ThreadDeomo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Template.h" />
+    <ClInclude Include="ThreadDemo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
