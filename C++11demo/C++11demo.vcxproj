@@ -153,6 +153,7 @@
     <ClCompile Include="ThreadDeomo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="container.h" />
     <ClInclude Include="Template.h" />
     <ClInclude Include="ThreadDemo.h" />
   </ItemGroup>
