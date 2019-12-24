@@ -4,17 +4,26 @@
 #include <iostream>
 #include "Template.h"
 #include "ThreadDemo.h"
+#include "ThreadPool.h"
 int main()
 {
     //std::cout << "Hello World!\n";
 
-    TestTemplate a;
-    auto d = createDelegate(&a, &TestTemplate::fun);
-    d(1);
+    //TestTemplate a;
+   /* auto d = createDelegate(&a, &TestTemplate::fun);
+    d(1);*/
     
-    testThread();
+    //testThread();
 
-
+    ThreadPool pool(1);
+    // enqueue and store future
+    std::string answer2("dd");
+    auto result = pool.enqueue([answer2](std::string answer) {
+        std::cout <<"answer : "<< answer << std::endl;
+        return answer; 
+        }, answer2);
+    // get result from future
+    std::cout << "result : " <<  result.get() << std::endl;
     //print(1, 2, 3, 4);
 }
 
