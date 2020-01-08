@@ -30,11 +30,41 @@ void func(std::shared_ptr<A> prt) {
 	cout << "计数 2：" << prt.use_count() << endl;
 }
 
+void reference(int& v) {
+	std::cout << "左值" << std::endl;
+}
+void reference(int&& v) {
+	std::cout << "右值" << std::endl;
+}
+template <typename T>
+void pass(T&& v) {
+	std::cout << "普通传参:";
+	reference(v); // 始终调用 reference(int&)
+
+	std::cout << "       std::move 传参: ";
+	reference(std::move(v));
+
+	std::cout << "    std::forward 传参: ";
+	reference(std::forward<T>(v));
+
+	std::cout << "static_cast<T&&> 传参: ";
+	reference(static_cast<T&&>(v));
+}
+
 void testSharedPtr() {
 	shared_ptr<A> prt = make_shared<A>();
 	cout << "计数 1：" << prt.use_count() << endl;
 	prt->print();
 	func(move(prt));
+	func(move(prt));
 	cout << "计数 3：" << prt.use_count() << endl;
 	prt->print();
+
+
+	//std::cout << "传递右值:" << std::endl;
+	//pass(1); // 1是右值, 但输出是左值
+
+	//std::cout << "传递左值:" << std::endl;
+	//int l = 1;
+	//pass(l); // l 是左值, 输出左值
 }
