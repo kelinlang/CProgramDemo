@@ -5,6 +5,8 @@
 #include "Template.h"
 #include "ThreadDemo.h"
 #include "ThreadPool.h"
+#include "shared_ptr.h"
+
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -15,16 +17,18 @@ int main()
     
     //testThread();
 
-    ThreadPool pool(1);
-    // enqueue and store future
-    std::string answer2("dd");
-    auto result = pool.enqueue([answer2](std::string answer) {
-        std::cout <<"answer : "<< answer << std::endl;
-        return answer; 
-        }, answer2);
-    // get result from future
-    std::cout << "result : " <<  result.get() << std::endl;
+    //ThreadPool pool(1);
+    //// enqueue and store future
+    //std::string answer2("dd");
+    //auto result = pool.enqueue([answer2](std::string answer) {
+    //    std::cout <<"answer : "<< answer << std::endl;
+    //    return answer; 
+    //    }, answer2);
+    //// get result from future
+    //std::cout << "result : " <<  result.get() << std::endl;
     //print(1, 2, 3, 4);
+
+    testSharedPtr();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
