@@ -51,12 +51,15 @@ void pass(T&& v) {
 	reference(static_cast<T&&>(v));
 }
 
+static shared_ptr<A> prts;
+
 void testSharedPtr() {
 	shared_ptr<A> prt = make_shared<A>();
+	prts = prt;
 	cout << "计数 1：" << prt.use_count() << endl;
 	prt->print();
-	func(move(prt));
-	func(move(prt));
+	func(prt);
+	//func(move(prt));
 	cout << "计数 3：" << prt.use_count() << endl;
 	prt->print();
 
