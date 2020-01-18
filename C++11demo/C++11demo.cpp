@@ -6,7 +6,7 @@
 #include "ThreadDemo.h"
 #include "ThreadPool.h"
 #include "shared_ptr.h"
-
+#include "extends.h"
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -27,6 +27,12 @@ int main()
     //// get result from future
     //std::cout << "result : " <<  result.get() << std::endl;
     //print(1, 2, 3, 4);
+
+	/*std::shared_ptr<int> ptr1 = std::make_shared<int>();
+	std::shared_ptr<int> ptr2 = ptr1;
+	cout << "ptr1:" << ptr1 << endl;
+	cout << "ptr2:" << ptr2 << endl;*/
+	testExtends();
 
     testSharedPtr();
 }

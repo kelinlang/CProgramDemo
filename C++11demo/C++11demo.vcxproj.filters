@@ -47,5 +47,8 @@
     <ClInclude Include="shared_ptr.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="extends.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

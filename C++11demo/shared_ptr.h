@@ -53,16 +53,30 @@ void pass(T&& v) {
 
 static shared_ptr<A> prts;
 
-void testSharedPtr() {
-	shared_ptr<A> prt = make_shared<A>();
-	prts = prt;
-	cout << "计数 1：" << prt.use_count() << endl;
-	prt->print();
-	func(prt);
-	//func(move(prt));
-	cout << "计数 3：" << prt.use_count() << endl;
-	prt->print();
+template<typename Data>
+class AT {
+public:
+	typedef std::shared_ptr<AT> APtr;
+	Data getData();
+};
 
+
+class B : public AT<int> {
+public:
+	typedef std::shared_ptr<B> BPtr;
+};
+
+
+
+void testSharedPtr() {
+	//shared_ptr<A> prt = make_shared<A>();
+	//prts = prt;
+	//cout << "计数 1：" << prt.use_count() << endl;
+	//prt->print();
+	//func(prt);
+	////func(move(prt));
+	//cout << "计数 3：" << prt.use_count() << endl;
+	//prt->print();
 
 	//std::cout << "传递右值:" << std::endl;
 	//pass(1); // 1是右值, 但输出是左值
@@ -70,4 +84,12 @@ void testSharedPtr() {
 	//std::cout << "传递左值:" << std::endl;
 	//int l = 1;
 	//pass(l); // l 是左值, 输出左值
+
+
+	//B::BPtr b = std::make_shared<B>();
+	//std::cout << b << std::endl;
+
+	////AT<int>::APtr a = std::dynamic_pointer_cast<B::BPtr>(b);
+	//AT<int>::APtr a = std::dynamic_pointer_cast<B::BPtr>(b);
+	//std::cout << a << std::endl;
 }

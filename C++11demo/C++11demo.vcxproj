@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="container.h" />
+    <ClInclude Include="extends.h" />
     <ClInclude Include="shared_ptr.h" />
     <ClInclude Include="Template.h" />
     <ClInclude Include="ThreadDemo.h" />
