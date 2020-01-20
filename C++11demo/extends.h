@@ -77,8 +77,16 @@ public:
 
 };
 
+void testSharePtr(TestC::TestCPtr& testPtr) {
+	cout << "count : " << testPtr.use_count() << endl;
+}
+
 void testExtends() {
 	//shared_ptr<Child> c = make_shared<Child>();
+	shared_ptr<TestC> c = make_shared<TestC>(3);
+	testSharePtr(c);
+
+
 	
 	std::vector<TestC::TestCPtr> ts;
 	ts.push_back(std::make_shared<TestC>(3));
