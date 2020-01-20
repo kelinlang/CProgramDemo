@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <iostream>
+
 using namespace std;
 class Parent
 {
@@ -43,7 +44,52 @@ Child::~Child()
 	cout << "child dis construnct" << endl;
 }
 
+class TestC {
+public:
+	TestC(int value) {
+		this->value = value;
+	}
+	using TestCPtr = std::shared_ptr<TestC>;
+	bool operator > (TestCPtr messagePtr) const {
+		return (this->value > messagePtr->value);
+	}
+
+	/*bool operator < (TestCPtr messagePtr) const {
+		return (this->value < messagePtr->value);
+	}
+
+	bool operator==(TestCPtr messagePtr) const {
+		return (this->value == messagePtr->value);
+	}*/
+	bool operator()(TestCPtr messagePtr, TestCPtr messagePtrR) const {
+		return (messagePtr->value < messagePtrR->value);
+	}
+public:
+	int value;
+};
+
+template<class T>
+class ValComp {
+public:
+	bool operator()(const T& t1, const T& t2) const {
+		return (t1 < t2);
+	}
+
+};
 
 void testExtends() {
-	shared_ptr<Child> c = make_shared<Child>();
+	//shared_ptr<Child> c = make_shared<Child>();
+	
+	std::vector<TestC::TestCPtr> ts;
+	ts.push_back(std::make_shared<TestC>(3));
+	ts.push_back(std::make_shared<TestC>(6));
+	ts.push_back(std::make_shared<TestC>(1));
+	ts.push_back(std::make_shared<TestC>(5));
+	std::sort(ts.begin(), ts.end(), [](TestC::TestCPtr messagePtr, TestC::TestCPtr messagePtrR) {
+		return (messagePtr->value < messagePtrR->value);
+		});
+	for (auto &p: ts)
+	{
+		std::cout<< p->value << endl;
+	}
 }
